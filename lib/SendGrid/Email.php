@@ -4,7 +4,7 @@ namespace SendGrid;
 
 class Email {
 
-  public $to, 
+  public $to,
          $from,
          $from_name,
          $reply_to,
@@ -39,7 +39,7 @@ class Email {
       } else {
         if ($val == $item) {
           unset($list[$key]);
-        } 
+        }
       }
     }
     //repack the indices
@@ -51,7 +51,7 @@ class Email {
     return $this;
   }
 
-  public function setTos(array $emails) { 
+  public function setTos(array $emails) {
     $this->smtpapi->setTos($emails);
     return $this;
   }
@@ -73,7 +73,7 @@ class Email {
     $this->from_name = $name;
     return $this;
   }
- 
+
   public function getFromName() {
     return $this->from_name;
   }
@@ -121,7 +121,7 @@ class Email {
     $this->bcc_list = $email_list;
     return $this;
   }
- 
+
   public function addBcc($email) {
     $this->bcc_list[] = $email;
     return $this;
@@ -240,7 +240,7 @@ class Email {
     $this->smtpapi->setSections($key_value_pairs);
     return $this;
   }
-  
+
   public function addSection($from_value, $to_value) {
     $this->smtpapi->addSection($from_value, $to_value);
     return $this;
@@ -261,7 +261,7 @@ class Email {
     $this->smtpapi->addUniqueArg($key, $value);
     return $this;
   }
-  
+
   ## synonym method
   public function addUniqueArgument($key, $value) {
     $this->smtpapi->addUniqueArg($key, $value);
@@ -283,42 +283,47 @@ class Email {
     $this->smtpapi->addFilter($filter_name, $parameter_name, $parameter_value);
     return $this;
   }
- 
+
   ## synonym method
   public function addFilterSetting($filter_name, $parameter_name, $parameter_value) {
     $this->smtpapi->addFilter($filter_name, $parameter_name, $parameter_value);
     return $this;
   }
 
+  public function setIpPool($ip_pool) {
+    $this->smtpapi->setIpPool($ip_pool);
+    return $this;
+  }
+
   public function getHeaders() {
     return $this->headers;
   }
- 
+
   public function getHeadersJson() {
     if (count($this->getHeaders()) <= 0) {
       return "{}";
     }
     return json_encode($this->getHeaders(), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP);
   }
- 
+
   public function setHeaders($key_value_pairs) {
     $this->headers = $key_value_pairs;
     return $this;
   }
- 
+
   public function addHeader($key, $value) {
     $this->headers[$key] = $value;
     return $this;
   }
- 
+
   public function removeHeader($key) {
     unset($this->headers[$key]);
     return $this;
   }
 
   public function toWebFormat() {
-    $web = array( 
-      'to'          => $this->to, 
+    $web = array(
+      'to'          => $this->to,
       'from'        => $this->getFrom(),
       'x-smtpapi'   => $this->smtpapi->jsonString(),
       'subject'     => $this->getSubject(),
@@ -343,7 +348,7 @@ class Email {
           $extension      = $f['extension'];
         };
         $filename         = $f['filename'];
-        $full_filename    = $filename; 
+        $full_filename    = $filename;
 
         if (isset($extension)) {
           $full_filename  =  $filename.'.'.$extension;
@@ -352,7 +357,7 @@ class Email {
           $full_filename  = $f['custom_filename'];
         }
 
-        $contents   = '@' . $file; 
+        $contents   = '@' . $file;
         if (class_exists('CurlFile')) { // php >= 5.5
           $contents = new \CurlFile($file, $extension, $filename);
         }
@@ -366,12 +371,12 @@ class Email {
 
   /**
    * There needs to be at least 1 to address, or else the mail won't send.
-   * This method modifies the data that will be sent via either Rest 
+   * This method modifies the data that will be sent via either Rest
    */
   public function updateMissingTo($data) {
     if ($this->smtpapi->to && (count($this->smtpapi->to) > 0)) {
       $data['to'] = $this->getFrom();
-    } 
+    }
     return $data;
   }
 }
