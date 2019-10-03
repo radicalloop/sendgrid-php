@@ -9,7 +9,7 @@
 [![GitHub contributors](https://img.shields.io/github/contributors/sendgrid/sendgrid-php.svg)](https://github.com/sendgrid/sendgrid-php/graphs/contributors)
 [![Open Source Helpers](https://www.codetriage.com/sendgrid/sendgrid-php/badges/users.svg)](https://www.codetriage.com/sendgrid/sendgrid-php)
 
-**NEW:** 
+**NEW:**
 - Subscribe to email [notifications](https://dx.sendgrid.com/newsletter/php) for releases and breaking changes.
 - Send SMS messages with [Twilio](https://github.com/sendgrid/sendgrid-php/blob/master/USE_CASES.md#sms).
 
@@ -66,7 +66,7 @@ Add Twilio SendGrid to your `composer.json` file. If you are not using [Composer
 ```json
 {
   "require": {
-    "sendgrid/sendgrid": "~7"
+    "radicalloop/sendgrid": "~7"
   }
 }
 ```
@@ -102,7 +102,7 @@ require 'vendor/autoload.php'; // If you're using Composer (recommended)
 // which is included in the download:
 // https://github.com/sendgrid/sendgrid-php/releases
 
-$email = new \SendGrid\Mail\Mail(); 
+$email = new \SendGrid\Mail\Mail();
 $email->setFrom("test@example.com", "Example User");
 $email->setSubject("Sending with Twilio SendGrid is Fun");
 $email->addTo("test@example.com", "Example User");
