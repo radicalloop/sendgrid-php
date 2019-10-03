@@ -1,8 +1,8 @@
 {
-  "name": "sendgrid/sendgrid",
+  "name": "radicalloop/sendgrid",
   "description": "This library allows you to quickly and easily send emails through SendGrid using PHP.",
   "version": "2.0.5.1",
-  "homepage": "http://github.com/sendgrid/sendgrid-php",
+  "homepage": "http://github.com/radicalloop/sendgrid-php",
   "license": "MIT",
   "keywords": ["SendGrid", "sendgrid", "email", "send", "grid"],
   "require": {
@@ -15,7 +15,7 @@
     "vlucas/phpdotenv": "1.0.2"
   },
   "replace": {
-    "sendgrid/sendgrid-php": "*"
+    "radicalloop/sendgrid-php": "*"
   },
   "type": "library",
   "autoload": {

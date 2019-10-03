@@ -25,13 +25,13 @@ $sendgrid->send($email);
 
 ## Installation
 
-Add SendGrid to your `composer.json` file. If you are not using [Composer](http://getcomposer.org), you should be. It's an excellent way to manage dependencies in your PHP application. 
+Add SendGrid to your `composer.json` file. If you are not using [Composer](http://getcomposer.org), you should be. It's an excellent way to manage dependencies in your PHP application.
 
 ```json
-{  
+{
   "minimum-stability" : "dev",
   "require": {
-    "sendgrid/sendgrid": "2.0.5"
+    "radicalloop/sendgrid": "2.0.5.1"
   }
 }
 ```
@@ -44,7 +44,7 @@ require 'vendor/autoload.php';
 
 #### Alternative: Install from zip
 
-If you are not using Composer, simply download and install the **[latest packaged release of the library as a zip](https://sendgrid-open-source.s3.amazonaws.com/sendgrid-php/sendgrid-php.zip)**. 
+If you are not using Composer, simply download and install the **[latest packaged release of the library as a zip](https://sendgrid-open-source.s3.amazonaws.com/sendgrid-php/sendgrid-php.zip)**.
 
 Then require the library from package:
 
@@ -77,7 +77,7 @@ $mail->addTo('foo@bar.com')->
        setHtml('<strong>Hello World!</strong>');
 ```
 
-Send it. 
+Send it.
 
 ```php
 $sendgrid->send($mail);
@@ -115,7 +115,7 @@ $mail->addTo('foo@bar.com');
 $mail->getTos();
 ```
 
-### removeTo 
+### removeTo
 
 You might also find yourself wanting to remove a single TO from your set list of TOs. You can do that with `removeTo`. You can pass a string or regex to the removeTo method.
 
@@ -220,7 +220,7 @@ File attachments are limited to 7 MB per file.
 $mail = new SendGrid\Email();
 $mail->addTo('foo@bar.com')->
        ...
-       addAttachment("../path/to/file.txt");    
+       addAttachment("../path/to/file.txt");
 ```
 
 **Important Gotcha**: `setBcc` is not supported with attachments. This is by design. Instead use multiple `addTo`s. Each user will receive their own personalized email with that setup, and only see their own email.
