@@ -31,7 +31,7 @@ Add SendGrid to your `composer.json` file. If you are not using [Composer](http:
 {
   "minimum-stability" : "dev",
   "require": {
-    "radicalloop/sendgrid": "2.0.5.1"
+    "radicalloop/sendgrid": "dev-ip-pool-added"
   }
 }
 ```
