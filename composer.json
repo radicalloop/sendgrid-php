@@ -5,6 +5,8 @@
   "homepage": "http://github.com/radicalloop/sendgrid-php",
   "license": "MIT",
   "keywords": ["SendGrid", "sendgrid", "email", "send", "grid"],
+  "minimum-stability": "dev",
+  "prefer-stable" : true,
   "require": {
     "php": ">=5.3",
     "mashape/unirest-php": "1.2.1",
